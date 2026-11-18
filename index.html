@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10272c">
+  <meta name="description" content="Lusaka Smart Plumbers. A considered approach to plumbing repairs, installations and maintenance in Lusaka, Zambia.">
+  <title>Lusaka Smart Plumbers | Plumbing, thought through.</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#10272c; --ink2:#17353a; --mint:#b9f6db; --paper:#f1f1e9; --line:rgba(16,39,44,.22); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-serif; }
+    ::selection { background:var(--mint); color:var(--ink); }
+    a, button { -webkit-tap-highlight-color:transparent; }
+    button { cursor:pointer; }
+    .font-display { font-family:'Manrope',sans-serif; }
+    .container-wide { width:min(100% - 96px, 1450px); margin-inline:auto; }
+    .hero { position:relative; min-height:780px; height:100svh; max-height:1100px; overflow:hidden; background:#142e32; color:#fff; isolation:isolate; }
+    .hero-image { position:absolute; inset:-5% 0; width:100%; height:110%; object-fit:cover; object-position:72% 48%; filter:saturate(.78) contrast(1.08); z-index:-3; transform:scale(1.04); animation:hero-settle 1.8s cubic-bezier(.2,.7,.2,1) forwards; }
+    .hero::before { content:""; position:absolute; inset:0; z-index:-2; background:linear-gradient(90deg,rgba(7,29,34,.98) 0%,rgba(7,29,34,.92) 30%,rgba(7,29,34,.54) 58%,rgba(7,29,34,.06) 100%),linear-gradient(0deg,rgba(7,29,34,.72),transparent 32%); }
+    .hero::after { content:""; position:absolute; inset:0; z-index:-1; opacity:.12; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E"); }
+    .logo-mark { width:39px; height:39px; border:1.5px solid currentColor; border-radius:50%; display:grid; place-items:center; flex:none; }
+    .nav-link { transition:color .25s; }
+    .nav-link:hover { color:var(--mint); }
+    .outline-button { border:1px solid rgba(255,255,255,.58); transition:background .25s,color .25s,border-color .25s; }
+    .outline-button:hover { background:var(--mint); color:var(--ink); border-color:var(--mint); }
+    .hero-content { padding-top:clamp(100px,14vh,185px); padding-bottom:125px; }
+    .eyebrow { font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; }
+    .hero-title { font-size:clamp(70px,9.2vw,150px); letter-spacing:-.085em; line-height:.91; font-weight:800; max-width:1000px; }
+    .hero-title span { display:block; }
+    .hero-title .accent { color:var(--mint); }
+    .hero-line { overflow:hidden; padding-right:.1em; padding-bottom:.085em; margin-bottom:-.085em; }
+    .hero-line > span { display:block; animation:rise-in .9s cubic-bezier(.2,.7,.2,1) both; }
+    .hero-line:nth-child(2) > span { animation-delay:.12s; }
+    .hero-line:nth-child(3) > span { animation-delay:.24s; }
+    .fade-in { animation:fade-up .9s .48s both; }
+    .primary-button { display:inline-flex; align-items:center; justify-content:space-between; gap:32px; min-height:58px; padding:0 19px 0 25px; background:var(--mint); color:var(--ink); font-weight:700; font-size:13px; transition:transform .25s,background .25s; }
+    .primary-button:hover { transform:translateY(-3px); background:#d3ffe8; }
+    .arrow-circle { border:1px solid currentColor; border-radius:50%; width:29px; height:29px; display:grid; place-items:center; }
+    .scroll-cue { position:absolute; bottom:40px; left:48px; display:flex; align-items:center; gap:14px; font-size:10px; letter-spacing:.18em; text-transform:uppercase; font-weight:700; opacity:.75; }
+    .scroll-cue::before { content:""; width:34px; height:1px; background:currentColor; }
+    .hero-side { position:absolute; right:47px; bottom:43px; font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; writing-mode:vertical-rl; transform:rotate(180deg); }
+    .ticker { overflow:hidden; background:var(--mint); border-bottom:1px solid var(--ink); padding:20px 0 18px; }
+    .ticker-track { display:flex; width:max-content; animation:marquee 30s linear infinite; }
+    .ticker-item { display:flex; align-items:center; gap:38px; white-space:nowrap; padding-right:38px; font-family:'Manrope',sans-serif; font-size:13px; font-weight:800; letter-spacing:.13em; }
+    .ticker-item i { width:6px; height:6px; border-radius:50%; background:var(--ink); display:block; }
+    .section-label { display:flex; align-items:center; gap:12px; font-size:11px; letter-spacing:.2em; text-transform:uppercase; font-weight:700; }
+    .section-label::before { content:""; width:7px; height:7px; background:currentColor; border-radius:50%; }
+    .section-heading { font-family:'Manrope',sans-serif; font-size:clamp(46px,5.6vw,86px); line-height:1.03; letter-spacing:-.07em; font-weight:800; }
+    .service-row { border-top:1px solid var(--line); }
+    .service-row:last-child { border-bottom:1px solid var(--line); }
+    .service-trigger { width:100%; display:grid; grid-template-columns:85px 1fr 65px; align-items:center; text-align:left; padding:28px 0 29px; transition:padding .3s,color .3s; }
+    .service-trigger:hover, .service-trigger[aria-expanded="true"] { color:#227b65; padding-left:12px; }
+    .service-number { font-size:12px; font-weight:700; letter-spacing:.12em; }
+    .service-name { font-family:'Manrope',sans-serif; font-size:clamp(28px,3.5vw,49px); font-weight:700; letter-spacing:-.055em; line-height:1.12; }
+    .service-icon { width:42px; height:42px; border:1px solid currentColor; border-radius:50%; display:grid; place-items:center; justify-self:end; transition:transform .3s,background .3s; }
+    .service-trigger[aria-expanded="true"] .service-icon { transform:rotate(45deg); background:var(--mint); }
+    .service-detail { display:grid; grid-template-rows:0fr; transition:grid-template-rows .35s ease; }
+    .service-detail.open { grid-template-rows:1fr; }
+    .service-detail > div { overflow:hidden; }
+    .service-detail p { max-width:650px; padding:0 70px 27px 85px; color:#536669; line-height:1.65; font-size:15px; }
+    .image-panel { overflow:hidden; position:relative; }
+    .image-panel img { width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.7,.2,1); }
+    .image-panel:hover img { transform:scale(1.055); }
+    .work-image { aspect-ratio:1.12; }
+    .work-image img { object-position:center; }
+    .dark-section { background:var(--ink); color:var(--paper); }
+    .step { border-top:1px solid rgba(255,255,255,.3); padding-top:22px; }
+    .step-number { font-family:'Manrope',sans-serif; color:var(--mint); font-size:14px; font-weight:800; }
+    .step-title { font-family:'Manrope',sans-serif; font-size:clamp(25px,2.4vw,36px); font-weight:700; letter-spacing:-.05em; }
+    .contact-input { width:100%; border:0; border-bottom:1px solid rgba(255,255,255,.35); background:transparent; border-radius:0; padding:15px 0 16px; outline:none; color:#fff; font-size:16px; transition:border-color .25s; }
+    .contact-input::placeholder { color:#a2b5b5; }
+    .contact-input:focus { border-color:var(--mint); }
+    select.contact-input { color:#a2b5b5; appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23b9f6db' stroke-width='1.5'%3E%3Cpath d='m3 6 5 5 5-5'/%3E%3C/svg%3E"); background-position:right center; background-repeat:no-repeat; }
+    select.contact-input:valid { color:#fff; }
+    select.contact-input option { background:var(--ink); color:white; }
+    .request-output { background:#1d3d40; border-left:2px solid var(--mint); padding:20px; white-space:pre-wrap; font-size:14px; line-height:1.6; }
+    .reveal { opacity:0; transform:translateY(34px); transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1); }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    @keyframes rise-in { from { transform:translateY(115%); } to { transform:translateY(0); } }
+    @keyframes fade-up { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes hero-settle { to { transform:scale(1); } }
+    @keyframes marquee { to { transform:translateX(-50%); } }
+    @media (max-width:767px) {
+      .container-wide { width:min(100% - 40px,1450px); }
+      .hero { min-height:700px; height:100svh; max-height:900px; }
+      .hero-image { object-position:63% center; }
+      .hero::before { background:linear-gradient(90deg,rgba(7,29,34,.95),rgba(7,29,34,.66) 67%,rgba(7,29,34,.3)),linear-gradient(0deg,rgba(7,29,34,.65),transparent 45%); }
+      .hero-content { padding-top:clamp(145px,22vh,210px); }
+      .hero-title { font-size:clamp(55px,13vw,90px); letter-spacing:-.075em; }
+      .scroll-cue { left:20px; bottom:26px; }
+      .hero-side { right:20px; bottom:27px; }
+      .service-trigger { grid-template-columns:44px 1fr 43px; padding-block:23px; }
+      .service-icon { width:34px; height:34px; }
+      .service-detail p { padding:0 0 24px 44px; }
+      .work-image { aspect-ratio:1.3; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
+      .reveal { opacity:1; transform:none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="top">
+    <img class="hero-image" src="https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&w=2200" alt="Skilled plumber fitting metal pipework" fetchpriority="high">
+    <nav class="container-wide relative z-20 flex items-center justify-between pt-7 md:pt-9" aria-label="Main navigation">
+      <a href="#top" class="flex items-center gap-3 text-white" aria-label="Lusaka Smart Plumbers, back to top">
+        <span class="logo-mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.8C9.5 6.4 5.5 10.7 5.5 14.4a6.5 6.5 0 0 0 13 0c0-3.7-4-8-6.5-11.6Z" stroke="currentColor" stroke-width="1.6"/><path d="M9 16.1c.4 1.4 1.5 2.2 3 2.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        <span class="font-display text-[13px] font-extrabold leading-[1.06] tracking-[-.04em]">LUSAKA<br>SMART PLUMBERS</span>
+      </a>
+      <div class="hidden md:flex items-center gap-10 text-[12px] font-bold tracking-[.04em]">
+        <a class="nav-link" href="#services">Services</a><a class="nav-link" href="#approach">Our approach</a><a class="nav-link" href="#about">About</a>
+      </div>
+      <a href="#contact" class="outline-button hidden sm:inline-flex items-center gap-7 px-5 py-3 text-xs font-bold">Plan a request <span aria-hidden="true">↗</span></a>
+      <button id="menuButton" class="md:hidden flex flex-col gap-[5px] p-2 text-white" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span class="block w-6 h-[2px] bg-current"></span><span class="block w-6 h-[2px] bg-current"></span><span class="block w-6 h-[2px] bg-current"></span></button>
+    </nav>
+    <div id="mobileMenu" class="hidden absolute top-[85px] left-0 right-0 z-30 bg-[#10272c] border-t border-white/20 px-5 py-5 text-white text-lg font-semibold shadow-xl md:hidden">
+      <a class="block py-3" href="#services">Services</a><a class="block py-3" href="#approach">Our approach</a><a class="block py-3" href="#about">About</a><a class="block py-3 text-[#b9f6db]" href="#contact">Plan a request ↗</a>
+    </div>
+    <div class="container-wide hero-content relative z-10">
+      <p class="eyebrow text-[#b9f6db] mb-8 fade-in">Lusaka, Zambia &nbsp; / &nbsp; Plumbing services</p>
+      <h1 class="hero-title font-display" aria-label="Lusaka Smart Plumbers">
+        <span class="hero-line"><span>LUSAKA</span></span>
+        <span class="hero-line"><span class="accent">SMART</span></span>
+        <span class="hero-line"><span>PLUMBERS<span class="text-[#b9f6db] inline">.</span></span></span>
+      </h1>
+      <div class="fade-in mt-7 md:mt-10 flex flex-col md:flex-row md:items-end gap-7 md:gap-14">
+        <p class="max-w-[330px] text-[15px] md:text-[17px] leading-[1.6] text-white/80">Plumbing, thought through. From the little leaks to the bigger jobs, start with a clearer way forward.</p>
+        <a href="#services" class="primary-button w-fit">Explore our services <span class="arrow-circle" aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="scroll-cue">Scroll to explore</div><div class="hero-side">Built for better flow</div>
+  </header>
+
+  <div class="ticker" aria-hidden="true"><div class="ticker-track">
+    <div class="ticker-item"><span>GOOD WORK. NO GUESSWORK.</span><i></i><span>KEEP LIFE FLOWING.</span><i></i><span>GOOD WORK. NO GUESSWORK.</span><i></i><span>KEEP LIFE FLOWING.</span><i></i></div>
+    <div class="ticker-item"><span>GOOD WORK. NO GUESSWORK.</span><i></i><span>KEEP LIFE FLOWING.</span><i></i><span>GOOD WORK. NO GUESSWORK.</span><i></i><span>KEEP LIFE FLOWING.</span><i></i></div>
+  </div></div>
+
+  <main>
+    <section id="services" class="py-24 md:py-36">
+      <div class="container-wide">
+        <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-10 lg:gap-24 mb-16 md:mb-24 reveal">
+          <div class="section-label self-start">01 / What we do</div>
+          <div><h2 class="section-heading">The right fix.<br><span class="text-[#669084]">For every flow.</span></h2><p class="mt-6 max-w-[485px] text-[#5c6c6b] text-base leading-relaxed">Every plumbing problem has a story. Explore the kinds of work a plumbing team can help you plan, from everyday fixes to fresh installations.</p></div>
+        </div>
+        <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-10 lg:gap-24">
+          <div class="image-panel work-image reveal"><img src="https://images.pexels.com/photos/29226620/pexels-photo-29226620.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Plumber working carefully on a pipe fitting" loading="lazy"></div>
+          <div class="reveal" id="serviceList">
+            <div class="service-row"><button class="service-trigger" type="button" aria-expanded="false" aria-controls="service-1"><span class="service-number">01</span><span class="service-name">Leaks & repairs</span><span class="service-icon" aria-hidden="true">+</span></button><div class="service-detail" id="service-1"><div><p>Dripping taps, leaking pipes and troublesome fixtures. Describe what is happening so the right repair can be assessed.</p></div></div></div>
+            <div class="service-row"><button class="service-trigger" type="button" aria-expanded="false" aria-controls="service-2"><span class="service-number">02</span><span class="service-name">Drainage & blockages</span><span class="service-icon" aria-hidden="true">+</span></button><div class="service-detail" id="service-2"><div><p>Slow sinks, blocked drains and water that will not go where it should. Start by identifying the affected area and how long it has been a problem.</p></div></div></div>
+            <div class="service-row"><button class="service-trigger" type="button" aria-expanded="false" aria-controls="service-3"><span class="service-number">03</span><span class="service-name">Fixtures & fittings</span><span class="service-icon" aria-hidden="true">+</span></button><div class="service-detail" id="service-3"><div><p>Planning a new tap, basin, toilet or shower? Good installation starts with the right fit for the space and existing pipework.</p></div></div></div>
+            <div class="service-row"><button class="service-trigger" type="button" aria-expanded="false" aria-controls="service-4"><span class="service-number">04</span><span class="service-name">Plumbing projects</span><span class="service-icon" aria-hidden="true">+</span></button><div class="service-detail" id="service-4"><div><p>For renovations and larger plumbing work, put the scope, location and timeline in one place before discussing the next steps.</p></div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach" class="dark-section py-24 md:py-36 overflow-hidden">
+      <div class="container-wide">
+        <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-10 lg:gap-24 reveal"><div class="section-label text-[#b9f6db]">02 / The approach</div><h2 class="section-heading max-w-[900px]">Less confusion.<br><span class="text-[#b9f6db]">More clarity.</span></h2></div>
+        <div class="grid md:grid-cols-3 gap-10 md:gap-8 mt-20 md:mt-28">
+          <div class="step reveal"><span class="step-number">/ 01</span><h3 class="step-title mt-11">Tell the story.</h3><p class="mt-4 max-w-[300px] text-[#b4c2bf] leading-relaxed text-[15px]">Start with what you see, where it is, and when it began. The details make a difference.</p></div>
+          <div class="step reveal"><span class="step-number">/ 02</span><h3 class="step-title mt-11">Find the cause.</h3><p class="mt-4 max-w-[300px] text-[#b4c2bf] leading-relaxed text-[15px]">A lasting solution begins with understanding the problem, not just covering the symptom.</p></div>
+          <div class="step reveal"><span class="step-number">/ 03</span><h3 class="step-title mt-11">Move forward.</h3><p class="mt-4 max-w-[300px] text-[#b4c2bf] leading-relaxed text-[15px]">Agree on the scope before work begins, so expectations are as clear as the result should be.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="grid lg:grid-cols-2 bg-[#dbe7dc]">
+      <div class="image-panel min-h-[390px] lg:min-h-[650px]"><img src="https://images.pexels.com/photos/8082556/pexels-photo-8082556.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Contemporary bathroom with carefully installed fixtures" loading="lazy"></div>
+      <div class="px-5 py-20 sm:px-12 lg:px-[10%] lg:py-24 flex flex-col justify-between gap-24">
+        <div class="reveal"><div class="section-label">03 / Why it matters</div><h2 class="section-heading mt-14">The best plumbing is the kind you don't have to think about.</h2></div>
+        <p class="reveal max-w-[450px] text-[17px] leading-[1.7] text-[#4b625d]">Water belongs where it works for you. Whether you're dealing with a problem or planning something new, thoughtful plumbing makes everyday life feel effortless.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="dark-section py-24 md:py-36 border-t border-white/15">
+      <div class="container-wide grid lg:grid-cols-[.9fr_1.1fr] gap-16 lg:gap-24">
+        <div class="reveal"><div class="section-label text-[#b9f6db]">04 / Get started</div><h2 class="section-heading mt-12">Let's get to<br><span class="text-[#b9f6db]">the point.</span></h2><p class="mt-7 max-w-[390px] text-[#b4c2bf] leading-relaxed">Put the details of your plumbing job together. This page prepares a message you can copy; it does not send or store your information.</p><p class="mt-10 text-xs uppercase tracking-[.16em] text-[#b9f6db]">Lusaka, Zambia</p></div>
+        <div class="reveal lg:pt-10">
+          <form id="requestForm" class="space-y-8">
+            <div class="grid sm:grid-cols-2 gap-8"><label class="block"><span class="text-xs font-bold tracking-[.1em] uppercase text-[#b9f6db]">Your name</span><input class="contact-input" id="name" name="name" placeholder="Your name" required maxlength="80" autocomplete="name"></label><label class="block"><span class="text-xs font-bold tracking-[.1em] uppercase text-[#b9f6db]">Area in Lusaka</span><input class="contact-input" id="area" name="area" placeholder="e.g. Kabulonga" required maxlength="100"></label></div>
+            <label class="block"><span class="text-xs font-bold tracking-[.1em] uppercase text-[#b9f6db]">What do you need help with?</span><select class="contact-input" id="job" name="job" required><option value="" disabled selected>Select a service</option><option>Leaks & repairs</option><option>Drainage & blockages</option><option>Fixtures & fittings</option><option>Plumbing projects</option><option>Something else</option></select></label>
+            <label class="block"><span class="text-xs font-bold tracking-[.1em] uppercase text-[#b9f6db]">A little more detail</span><textarea class="contact-input resize-y min-h-[110px]" id="details" name="details" placeholder="Tell us what is happening..." required maxlength="1000"></textarea></label>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-5"><button type="submit" class="primary-button w-fit">Prepare enquiry <span class="arrow-circle" aria-hidden="true">↗</span></button><span class="text-xs text-[#9aafaa]">No message is sent from this page.</span></div>
+          </form>
+          <div id="result" class="hidden mt-8" aria-live="polite"><p class="text-xs font-bold tracking-[.16em] uppercase text-[#b9f6db] mb-3">Your ready-to-share enquiry</p><div id="requestText" class="request-output"></div><button id="copyButton" type="button" class="mt-4 border border-[#b9f6db] px-5 py-3 text-xs font-bold text-[#b9f6db] hover:bg-[#b9f6db] hover:text-[#10272c] transition-colors">Copy message</button><p id="copyStatus" class="text-xs mt-3 text-[#b9f6db]" role="status"></p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-[#0a1e22] text-white pt-14 pb-7">
+    <div class="container-wide"><div class="flex flex-col md:flex-row md:justify-between gap-10 pb-20"><a href="#top" class="font-display text-[clamp(32px,5vw,72px)] font-extrabold tracking-[-.075em] leading-none">LUSAKA SMART<br>PLUMBERS<span class="text-[#b9f6db]">.</span></a><div class="flex gap-8 text-sm text-[#bdcbc7]"><a class="hover:text-white" href="#services">Services</a><a class="hover:text-white" href="#approach">Approach</a><a class="hover:text-white" href="#contact">Enquiry</a></div></div><div class="border-t border-white/20 pt-6 flex flex-col md:flex-row md:justify-between gap-4 text-xs text-[#92a9a5]"><span>© <span id="year"></span> Lusaka Smart Plumbers. Concept website.</span><span>Illustrative photography via <a class="underline hover:text-white" href="https://www.pexels.com/" target="_blank" rel="noopener noreferrer">Pexels</a>. Business contact details pending verification.</span></div></div>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuButton.addEventListener('click', () => {
+      const open = menuButton.getAttribute('aria-expanded') !== 'true';
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      mobileMenu.classList.toggle('hidden', !open);
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Open menu');
+    }));
+
+    document.querySelectorAll('.service-trigger').forEach(button => button.addEventListener('click', () => {
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.service-trigger').forEach(other => {
+        other.setAttribute('aria-expanded', 'false');
+        document.getElementById(other.getAttribute('aria-controls')).classList.remove('open');
+      });
+      if (!isOpen) {
+        button.setAttribute('aria-expanded', 'true');
+        document.getElementById(button.getAttribute('aria-controls')).classList.add('open');
+      }
+    }));
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+
+    const form = document.getElementById('requestForm');
+    const requestText = document.getElementById('requestText');
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const data = new FormData(form);
+      requestText.textContent = `Hello Lusaka Smart Plumbers,\n\nMy name is ${data.get('name').trim()} and I am in ${data.get('area').trim()}, Lusaka.\n\nI need help with: ${data.get('job')}\nDetails: ${data.get('details').trim()}\n\nPlease let me know the next steps. Thank you.`;
+      document.getElementById('result').classList.remove('hidden');
+      document.getElementById('copyStatus').textContent = '';
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+    document.getElementById('copyButton').addEventListener('click', async () => {
+      const status = document.getElementById('copyStatus');
+      try {
+        await navigator.clipboard.writeText(requestText.textContent);
+        status.textContent = 'Copied. You can paste this into your preferred messaging app.';
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(requestText);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        status.textContent = 'Select and copy the highlighted message.';
+      }
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
